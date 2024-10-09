@@ -8,27 +8,31 @@
 }
 
 body {
-  background-color: black;
+  background-color: #24272b;
   color: white;
 }
 
 /* header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   width: 100%;
   padding: 1.2rem;
-  z-index: 10;
   box-sizing: border-box;
 }
 
 .header_title {
-  font-size: 2.4rem;
   margin-right: 2rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .header_icon {
@@ -68,6 +72,7 @@ body {
   position: absolute;
   bottom: 3rem;
   right: 3rem;
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -76,20 +81,23 @@ body {
 .banner_text {
   margin-bottom: 1rem;
   padding: 0.8rem 1.5rem;
-  border-radius: 0.6rem;
-  background-color: white;
+
   font-size: 2.5rem;
   font-weight: 800;
   color: black;
+  background-color: white;
+  border-radius: 0.6rem;
 }
 
 .banner_button {
   padding: 0.8rem 1.5rem;
+
   color: white;
-  border-radius: 0.6rem;
-  text-decoration: none;
   background-color: black;
+  border-radius: 0.6rem;
   opacity: 0.5;
+  text-decoration: none;
+
   transition: background-color 0.6s ease, opacity 0.3s ease;
 }
 
@@ -104,9 +112,9 @@ body {
 
 /* infinite banner */
 .section_title {
+  margin: 1.5rem 0 1.5rem 0.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 1rem 0.5rem;
 }
 
 .infinite_banner {
@@ -115,7 +123,6 @@ body {
 
 .infinite_banner_section {
   overflow: hidden;
-  margin-bottom: 3rem;
 }
 
 .infinite_slides {
@@ -144,8 +151,8 @@ body {
 
 /* scroll view */
 .scroll_container {
-  display: flex;
   position: relative;
+  display: flex;
 }
 
 .scroll_slides {
@@ -168,14 +175,16 @@ body {
   cursor: pointer;
 }
 
+/* scroll arrow */
 .scroll_arrow {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.3rem;
-  text-decoration: none;
+
+  font-size: 1.5rem;
   color: white;
   background-color: rgb(84, 84, 84);
   border-radius: 0.5rem;
-  font-size: 1.5rem;
+  text-decoration: none;
 }
