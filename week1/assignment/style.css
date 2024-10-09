@@ -115,7 +115,7 @@ body {
 
 .infinite_banner_section {
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .infinite_slides {
@@ -140,4 +140,38 @@ body {
 
 .infinite_slides img:hover {
   transform: scale(1.2);
+}
+
+/* scroll view */
+.scroll_container {
+  display: flex;
+  position: relative;
+}
+
+.scroll_slides {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.scroll_slides li {
+  flex: 0 0 18rem;
+  margin: 0 0.4rem;
+  overflow: hidden;
+}
+
+.scroll_slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.scroll_arrow {
+  width: 2rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: darkgray;
+  font-size: 1.5rem;
 }
