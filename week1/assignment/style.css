@@ -1,3 +1,17 @@
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
 /* header */
 .header {
   display: flex;
@@ -15,7 +29,6 @@
 .header_title {
   font-size: 2.4rem;
   margin-right: 2rem;
-  color: white;
 }
 
 .header_icon {
@@ -33,7 +46,6 @@
 
 .header a {
   text-decoration: none;
-  color: white;
 }
 
 .header a:visited {
@@ -42,7 +54,6 @@
 
 .header_icon i {
   font-size: 1.5rem;
-  color: white;
   cursor: pointer;
 }
 
@@ -63,12 +74,13 @@
 }
 
 .banner_text {
-  font-size: 2.5rem;
-  font-weight: 800;
+  margin-bottom: 1rem;
   padding: 0.8rem 1.5rem;
   border-radius: 0.6rem;
   background-color: white;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: black;
 }
 
 .banner_button {
@@ -88,4 +100,38 @@
 
 .banner_button i {
   margin-right: 0.5rem;
+}
+
+/* infinite banner */
+.section_title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0.5rem;
+}
+
+.infinite_banner {
+  display: flex;
+}
+
+.infinite_banner_section {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.infinite_slides {
+  display: flex;
+  animation: slide 30s infinite linear;
+}
+
+.infinite_slides li {
+  width: 18rem;
+  margin: 0 0.5rem;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.infinite_slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
