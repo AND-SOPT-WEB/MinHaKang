@@ -164,14 +164,18 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 
 .scroll_arrow {
-  width: 2rem;
-  border: none;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  text-decoration: none;
   color: white;
-  background-color: darkgray;
+  background-color: rgb(84, 84, 84);
+  border-radius: 0.5rem;
   font-size: 1.5rem;
 }
