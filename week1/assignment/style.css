@@ -128,10 +128,16 @@ body {
   margin: 0 0.5rem;
   overflow-y: hidden;
   scrollbar-width: none;
+  cursor: pointer;
 }
 
 .infinite_slides img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.infinite_slides img:hover {
+  transform: scale(1.2);
 }
