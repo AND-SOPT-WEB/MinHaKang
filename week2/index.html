@@ -10,9 +10,86 @@
   <body>
     <!-- Header -->
     <header class="header">
-      <i class="header_icon fas fa-home"></i>
+      <i class="header_icon fas fa-bars"></i>
       <h1 class="header_title">회원 관리 페이지</h1>
-      <p class="header_user">AND SOPT YB 강민하</p>
+      <p class="header_user">🌎 AND SOPT YB 강민하 🌎</p>
     </header>
+
+    <!-- Main -->
+    <main>
+      <!-- Filter -->
+      <section class="filter">
+        <div>
+          <label for="name">이름</label>
+          <input type="text" id="name" placeholder="이름을 입력하세요" />
+        </div>
+
+        <div>
+          <label for="englishName">영문이름</label>
+          <input
+            type="text"
+            id="englishName"
+            placeholder="영문이름을 입력하세요"
+          />
+        </div>
+
+        <div>
+          <label for="github">Github</label>
+          <input type="text" id="github" placeholder="Github ID를 입력하세요" />
+        </div>
+
+        <div>
+          <label for="gender">성별</label>
+          <select type="text" name="gender" id="gender" placeholder="성별 선택">
+            <option value="" selected disabled>성별 선택</option>
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="role">역할</label>
+          <select type="text" name="role" id="role" placeholder="OB / YB 선택">
+            <option value="" selected disabled>OB / YB 선택</option>
+            <option value="male">OB</option>
+            <option value="female">YB</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="firstWeekGroup">1주차 금잔디조</label>
+          <input
+            type="number"
+            name="firstWeekGroup"
+            id="firstWeekGroup"
+            placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+          />
+        </div>
+
+        <div>
+          <label for="secondWeekGroup">2주차 금잔디조</label>
+          <input
+            type="number"
+            name="secondWeekGroup"
+            id="secondWeekGroup"
+            placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+          />
+        </div>
+
+        <div>
+          <button class="filter_reset">초기화</button>
+        </div>
+        <div>
+          <button class="filter_search">검색</button>
+        </div>
+      </section>
+
+      <!-- Table -->
+      <section class="table"></section>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/bba71c45d9.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

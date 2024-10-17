@@ -123,12 +123,32 @@ q:after {
   content: "";
   content: none;
 }
+/* Custom reset */
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
 }
 html,
 body {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  background-color: var(--gray02);
+}
+button {
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+:root {
+  --gray01: #7d7c7c;
+  --gray02: #f5eded;
+  --gray03: #e2dad6;
+  --gray04: #ccc;
+  --blue01: #7fa1c3;
+  --blue02: #4b697e;
 }
