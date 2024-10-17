@@ -1,0 +1,28 @@
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+
+  font-size: 2.4rem;
+  background-color: #7fa1c3;
+}
+
+.header * {
+  flex: 1;
+}
+
+.header_title {
+  text-align: center;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+
+.header_icon {
+  text-align: left;
+}
+
+.header_user {
+  text-align: right;
+}
