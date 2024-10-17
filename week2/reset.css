@@ -125,6 +125,7 @@ q:after {
 }
 /* Custom reset */
 table {
+  background-color: white;
   border-collapse: collapse;
   border-spacing: 0;
 }

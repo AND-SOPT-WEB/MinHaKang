@@ -114,3 +114,52 @@ main {
 .filter_search {
   background-color: var(--blue02);
 }
+
+/* Table */
+.table {
+  padding: 3rem 0;
+  margin: 0 auto;
+  margin-top: 2.4rem;
+}
+
+.table_button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.table_button button {
+  width: 14rem;
+  padding: 1.2rem 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.table_button_cancel {
+  background-color: var(--gray01);
+}
+
+.table_button_add {
+  background-color: var(--blue02);
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.table th {
+  padding: 1.6rem 0;
+  border: 1px solid var(--gray04);
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: var(--gray03);
+}
+
+.table td {
+  padding: 1.6rem 0;
+  border: 1px solid var(--gray04);
+  font-size: 1.6rem;
+  text-align: center;
+}
