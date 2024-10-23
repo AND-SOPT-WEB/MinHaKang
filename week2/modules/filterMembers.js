@@ -11,3 +11,20 @@ export const filterMembers = (members, filter) => {
     });
   });
 };
+
+export const resetFilters = () => {
+  const filterFields = [
+    'name',
+    'englishName',
+    'github',
+    'gender',
+    'role',
+    'firstWeekGroup',
+    'secondWeekGroup',
+  ];
+
+  filterFields.forEach((field) => {
+    const element = document.getElementById(field);
+    element.value = '';
+  });
+};

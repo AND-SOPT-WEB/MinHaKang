@@ -1,5 +1,5 @@
 import { renderMembers } from './modules/renderMembers.js';
-import { filterMembers } from './modules/filterMembers.js';
+import { filterMembers, resetFilters } from './modules/filterMembers.js';
 
 const membersData = JSON.parse(localStorage.getItem('membersData'));
 renderMembers(membersData);
@@ -16,7 +16,9 @@ document.querySelector('.filter_search').addEventListener('click', () => {
     secondWeekGroup: Number(document.getElementById('secondWeekGroup').value),
   };
 
-  // 필터링된 회원 목록 가져오기
   const filteredMembers = filterMembers(membersData, filter);
   renderMembers(filteredMembers);
 });
+
+// 초기화 버튼 클릭 이벤트
+document.querySelector('.filter_reset').addEventListener('click', resetFilters);
