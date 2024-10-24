@@ -1,4 +1,4 @@
-import { createCell } from '../util/createCell.js';
+import { createCell } from '../utils/createCell.js';
 
 const tbody = document.querySelector('tbody');
 

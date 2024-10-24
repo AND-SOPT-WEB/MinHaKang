@@ -7,7 +7,7 @@ import {
 } from './modules/selectMembers.js';
 import { deleteMembers } from './modules/deleteMember.js';
 import { addMember } from './modules/addMember.js';
-import { isFormValid } from './util/validation.js';
+import { isFormValid } from './utils/validation.js';
 
 let membersData = JSON.parse(localStorage.getItem('membersData'));
 
