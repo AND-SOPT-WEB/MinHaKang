@@ -3,7 +3,7 @@ import { renderMembers } from './modules/renderMembers.js';
 import { filterMembers, resetFilters } from './modules/filterMembers.js';
 import {
   selectAllCheckboxes,
-  handleCheckboxClick,
+  updateSelectAllCheckbox,
 } from './modules/selectMembers.js';
 import { deleteMembers } from './modules/deleteMember.js';
 import { addMember } from './modules/addMember.js';
@@ -42,8 +42,17 @@ const checkedMembers = document.querySelectorAll(
   'tbody input[type="checkbox"]'
 );
 
-selectAllCheckboxes(selectAllCheckbox, checkedMembers);
-handleCheckboxClick(selectAllCheckbox, checkedMembers);
+// 전체 체크박스 클릭 이벤트
+selectAllCheckbox.addEventListener('click', () => {
+  selectAllCheckboxes(selectAllCheckbox, checkedMembers);
+});
+
+// 체크박스 클릭 이벤트
+checkedMembers.forEach((checkbox) => {
+  checkbox.addEventListener('click', () => {
+    updateSelectAllCheckbox(selectAllCheckbox, checkedMembers);
+  });
+});
 
 // 선택삭제 버튼 클릭 이벤트
 document.querySelector('.table_button_cancel').addEventListener('click', () => {

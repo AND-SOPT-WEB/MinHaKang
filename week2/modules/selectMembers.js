@@ -1,24 +1,19 @@
-// 체크박스 전체 선택
+// 전체 체크박스를 선택하는 함수
 export const selectAllCheckboxes = (selectAllCheckbox, checkedMembers) => {
-  selectAllCheckbox.addEventListener('click', function () {
-    checkedMembers.forEach((checkbox) => {
-      checkbox.checked = this.checked;
-    });
+  checkedMembers.forEach((checkbox) => {
+    checkbox.checked = selectAllCheckbox.checked;
   });
 };
 
-// 체크박스 클릭 이벤트
-export const handleCheckboxClick = (selectAllCheckbox, checkedMembers) => {
-  checkedMembers.forEach((checkbox) => {
-    checkbox.addEventListener('click', function () {
-      if (!this.checked) {
-        selectAllCheckbox.checked = false;
-      } else {
-        const allChecked = Array.from(checkedMembers).every(
-          (key) => key.checked
-        );
-        selectAllCheckbox.checked = allChecked;
-      }
-    });
-  });
+// 전체 체크박스 상태를 관리하는 함수
+export const updateSelectAllCheckbox = (selectAllCheckbox, checkedMembers) => {
+  const allChecked = Array.from(checkedMembers).every(
+    (checkbox) => checkbox.checked
+  );
+
+  if (allChecked) {
+    selectAllCheckbox.checked = true;
+  } else {
+    selectAllCheckbox.checked = false;
+  }
 };
