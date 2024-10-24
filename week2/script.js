@@ -6,6 +6,7 @@ import {
   handleCheckboxClick,
 } from './modules/selectMembers.js';
 import { deleteMembers } from './modules/deleteMember.js';
+import { addMember } from './modules/addMember.js';
 
 let membersData = JSON.parse(localStorage.getItem('membersData'));
 
@@ -49,4 +50,41 @@ document.querySelector('.table_button_cancel').addEventListener('click', () => {
   localStorage.setItem('membersData', JSON.stringify(updatedMembers));
 
   renderMembers(updatedMembers);
+});
+
+// 모달창 열고 닫기 관련 기능
+const modal = document.querySelector('.modal');
+const modalClose = document.querySelector('.modal_close');
+const toggleModal = () => (modal.open ? modal.close() : modal.showModal());
+
+// 모달창 열기 및 닫기 이벤트
+document
+  .querySelector('.table_button_add')
+  .addEventListener('click', toggleModal);
+modalClose.addEventListener('click', toggleModal);
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) toggleModal();
+});
+
+// 멤버 추가 이벤트
+document.getElementById('addMemberForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const newMember = {
+    name: document.getElementById('newName').value,
+    englishName: document.getElementById('newEnglishName').value,
+    github: document.getElementById('newGithub').value,
+    gender: document.getElementById('newGender').value,
+    role: document.getElementById('newRole').value,
+    firstWeekGroup: Number(document.getElementById('newFirstWeekGroup').value),
+    secondWeekGroup: Number(
+      document.getElementById('newSecondWeekGroup').value
+    ),
+  };
+
+  membersData = addMember(newMember, membersData);
+  localStorage.setItem('membersData', JSON.stringify(membersData));
+
+  renderMembers(membersData);
+  modal.close();
 });

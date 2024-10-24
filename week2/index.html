@@ -108,6 +108,86 @@
         </table>
       </section>
     </main>
+
+    <!-- Modal -->
+    <dialog id="modal" class="modal">
+      <i class="modal_close fas fa-close"></i>
+      <h2 class="modal_title">새 멤버 추가</h2>
+
+      <form id="addMemberForm" class="addMemberForm">
+        <div>
+          <label for="newName">이름</label>
+          <input
+            type="text"
+            id="newName"
+            placeholder="이름을 입력하세요"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="newEnglishName">영문 이름</label>
+          <input
+            type="text"
+            id="newEnglishName"
+            placeholder="영문 이름을 입력하세요"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="newGithub">Github ID</label>
+          <input
+            type="text"
+            id="newGithub"
+            placeholder="Github ID를 입력하세요"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="newGender">성별</label>
+          <select id="newGender" required>
+            <option value="" selected disabled>성별 선택</option>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="newRole">역할</label>
+          <select id="newRole" required>
+            <option value="" selected disabled>OB / YB 선택</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="firstWeekGroup">1주차 금잔디조</label>
+          <input
+            type="number"
+            name="newFirstWeekGroup"
+            id="newFirstWeekGroup"
+            placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+          />
+        </div>
+
+        <div>
+          <label for="secondWeekGroup">2주차 금잔디조</label>
+          <input
+            type="number"
+            name="newSecondWeekGroup"
+            id="newSecondWeekGroup"
+            placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+          />
+        </div>
+
+        <div class="modal_button">
+          <button type="submit">추가</button>
+        </div>
+      </form>
+    </dialog>
     <script src="./script.js" type="module"></script>
     <script
       src="https://kit.fontawesome.com/bba71c45d9.js"
