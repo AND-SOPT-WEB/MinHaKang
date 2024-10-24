@@ -34,7 +34,10 @@ document.querySelector('.filter_search').addEventListener('click', () => {
 });
 
 // 초기화 버튼 클릭 이벤트
-document.querySelector('.filter_reset').addEventListener('click', resetFilters);
+document.querySelector('.filter_reset').addEventListener('click', () => {
+  resetFilters();
+  renderMembers(membersData);
+});
 
 // 체크박스 기능
 const selectAllCheckbox = document.querySelector('#selectAll');
