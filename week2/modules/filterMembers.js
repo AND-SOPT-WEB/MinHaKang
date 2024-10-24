@@ -3,6 +3,10 @@ export const filterMembers = (members, filter) => {
     return Object.keys(filter).every((key) => {
       if (!filter[key]) return true;
 
+      if (key === 'gender') {
+        return data[key] === filter[key];
+      }
+
       if (typeof data[key] === 'string') {
         return data[key].toLowerCase().includes(filter[key].toLowerCase());
       } else if (typeof data[key] === 'number') {
