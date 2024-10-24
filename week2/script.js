@@ -52,9 +52,10 @@ document.querySelector('.table_button_cancel').addEventListener('click', () => {
   renderMembers(updatedMembers);
 });
 
-// 모달창 열고 닫기 관련 기능
+// 모달창 관련 기능
 const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal_close');
+const addMemberForm = document.querySelector('.addMemberForm');
 const toggleModal = () => (modal.open ? modal.close() : modal.showModal());
 
 // 모달창 열기 및 닫기 이벤트
@@ -65,9 +66,12 @@ modalClose.addEventListener('click', toggleModal);
 modal.addEventListener('click', (e) => {
   if (e.target === modal) toggleModal();
 });
+modal.addEventListener('close', () => {
+  addMemberForm.reset();
+});
 
 // 멤버 추가 이벤트
-document.getElementById('addMemberForm').addEventListener('submit', (e) => {
+addMemberForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const newMember = {
