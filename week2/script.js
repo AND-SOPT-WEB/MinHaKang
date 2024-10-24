@@ -1,5 +1,9 @@
 import { renderMembers } from './modules/renderMembers.js';
 import { filterMembers, resetFilters } from './modules/filterMembers.js';
+import {
+  selectAllCheckboxes,
+  handleCheckboxClick,
+} from './modules/selectMembers.js';
 
 const membersData = JSON.parse(localStorage.getItem('membersData'));
 renderMembers(membersData);
@@ -22,3 +26,12 @@ document.querySelector('.filter_search').addEventListener('click', () => {
 
 // 초기화 버튼 클릭 이벤트
 document.querySelector('.filter_reset').addEventListener('click', resetFilters);
+
+// 체크박스 기능
+const selectAllCheckbox = document.querySelector('#selectAll');
+const checkedMembers = document.querySelectorAll(
+  'tbody input[type="checkbox"]'
+);
+
+selectAllCheckboxes(selectAllCheckbox, checkedMembers);
+handleCheckboxClick(selectAllCheckbox, checkedMembers);
