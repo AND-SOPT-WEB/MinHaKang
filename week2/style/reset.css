@@ -154,6 +154,9 @@ button {
   cursor: pointer;
   color: white;
 }
+a:visited {
+  color: black;
+}
 
 :root {
   --gray01: #7d7c7c;

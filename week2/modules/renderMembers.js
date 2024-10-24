@@ -13,7 +13,7 @@ export const renderMembers = (data) => {
     row.appendChild(createCell(checkbox));
     row.appendChild(createCell(member.name));
     row.appendChild(createCell(member.englishName));
-    row.appendChild(createCell(member.github));
+    row.appendChild(createCell({ github: member.github }));
     row.appendChild(createCell(member.gender === 'male' ? '남자' : '여자'));
     row.appendChild(createCell(member.role));
     row.appendChild(createCell(member.firstWeekGroup));

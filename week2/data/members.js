@@ -33,7 +33,7 @@ export const members = [
     id: 4,
     name: '김가연',
     englishName: 'GaYeonKim',
-    github: 'ayla_12',
+    github: 'ayla-12',
     gender: 'female',
     role: 'OB',
     firstWeekGroup: 8,
