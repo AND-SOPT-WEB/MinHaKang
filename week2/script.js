@@ -7,6 +7,7 @@ import {
 } from './modules/selectMembers.js';
 import { deleteMembers } from './modules/deleteMember.js';
 import { addMember } from './modules/addMember.js';
+import { isFormValid } from './util/validation.js';
 
 let membersData = JSON.parse(localStorage.getItem('membersData'));
 
@@ -80,11 +81,15 @@ addMemberForm.addEventListener('submit', (e) => {
     github: document.getElementById('newGithub').value,
     gender: document.getElementById('newGender').value,
     role: document.getElementById('newRole').value,
-    firstWeekGroup: Number(document.getElementById('newFirstWeekGroup').value),
-    secondWeekGroup: Number(
-      document.getElementById('newSecondWeekGroup').value
-    ),
+    firstWeekGroup: document.getElementById('newFirstWeekGroup').value
+      ? Number(document.getElementById('newFirstWeekGroup').value)
+      : null,
+    secondWeekGroup: document.getElementById('newSecondWeekGroup').value
+      ? Number(document.getElementById('newSecondWeekGroup').value)
+      : null,
   };
+
+  if (!isFormValid(newMember)) return;
 
   membersData = addMember(newMember, membersData);
   localStorage.setItem('membersData', JSON.stringify(membersData));
