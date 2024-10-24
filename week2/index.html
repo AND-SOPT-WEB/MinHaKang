@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>2주차 과제</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <i class="header_icon fas fa-bars"></i>
+      <h1 class="header_title">회원 관리 페이지</h1>
+      <p class="header_user">🌎 AND SOPT YB 강민하 🌎</p>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- Filter -->
+      <section class="filter">
+        <div>
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="이름을 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="englishName">영문이름</label>
+          <input
+            type="text"
+            id="englishName"
+            placeholder="영문이름을 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="github">Github</label>
+          <input
+            type="text"
+            id="github"
+            placeholder="Github ID를 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="gender">성별</label>
+          <select type="text" name="gender" id="gender" placeholder="성별 선택">
+            <option value="" selected disabled>성별 선택</option>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="role">역할</label>
+          <select type="text" name="role" id="role" placeholder="OB / YB 선택">
+            <option value="" selected disabled>OB / YB 선택</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="firstWeekGroup">1주차 금잔디조</label>
+          <input
+            type="number"
+            name="firstWeekGroup"
+            id="firstWeekGroup"
+            placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="secondWeekGroup">2주차 금잔디조</label>
+          <input
+            type="number"
+            name="secondWeekGroup"
+            id="secondWeekGroup"
+            placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <button class="filter_reset">초기화</button>
+        </div>
+        <div>
+          <button class="filter_search">검색</button>
+        </div>
+      </section>
+
+      <!-- Table -->
+      <section class="table">
+        <div class="table_button">
+          <button class="table_button_cancel">선택삭제</button>
+          <button class="table_button_add">추가</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><input id="selectAll" type="checkbox" /></th>
+              <th scope="col">이름</th>
+              <th scope="col">영문이름</th>
+              <th scope="col">GitHub</th>
+              <th scope="col">성별</th>
+              <th scope="col">역할</th>
+              <th scope="col">1주차 금잔디</th>
+              <th scope="col">2주차 금잔디</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Modal -->
+    <dialog id="modal" class="modal">
+      <i class="modal_close fas fa-close"></i>
+      <h2 class="modal_title">새 멤버 추가</h2>
+
+      <form id="addMemberForm" class="addMemberForm">
+        <div>
+          <label for="newName">이름</label>
+          <input
+            type="text"
+            id="newName"
+            placeholder="이름을 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="newEnglishName">영문 이름</label>
+          <input
+            type="text"
+            id="newEnglishName"
+            placeholder="영문 이름을 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="newGithub">Github ID</label>
+          <input
+            type="text"
+            id="newGithub"
+            placeholder="Github ID를 입력하세요"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="newGender">성별</label>
+          <select id="newGender">
+            <option value="" selected disabled>성별 선택</option>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="newRole">역할</label>
+          <select id="newRole">
+            <option value="" selected disabled>OB / YB 선택</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="firstWeekGroup">1주차 금잔디조</label>
+          <input
+            type="number"
+            name="newFirstWeekGroup"
+            id="newFirstWeekGroup"
+            placeholder="1주차 금잔디조를 입력하세요 (1~9)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label for="secondWeekGroup">2주차 금잔디조</label>
+          <input
+            type="number"
+            name="newSecondWeekGroup"
+            id="newSecondWeekGroup"
+            placeholder="2주차 금잔디조를 입력하세요 (1~9)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="modal_button">
+          <button type="submit">추가</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="./script.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/bba71c45d9.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
