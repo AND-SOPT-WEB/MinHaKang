@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
-const Game = ({
+const GameBoard = ({
   numbers,
   nextNumber,
   hiddenButtons,
@@ -30,7 +29,7 @@ const Game = ({
   );
 };
 
-export default Game;
+export default GameBoard;
 
 const GameContainer = styled.section`
   display: flex;

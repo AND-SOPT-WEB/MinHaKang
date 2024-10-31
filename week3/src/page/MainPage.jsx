@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from '@components/Header';
-import Game from '@components/Game';
+import GameBoard from '@components/GameBoard';
+import RangkingBoard from '@/components/RangkingBoard';
 import useGameBoard from '@/hook/useGameBoard.js';
 import { GAME_LEVEL, MENU_ITEMS } from '@/constant/constant.js';
 
@@ -20,7 +21,20 @@ const MainPage = () => {
   };
 
   const onGameEnd = () => {
-    alert(`게임 종료! 소요 시간: ${duration}초`);
+    const endTime = new Date().toISOString();
+    const levelInfo = level;
+    const playTime = duration;
+    const records = JSON.parse(localStorage.getItem('gameRecords')) || [];
+
+    records.push({
+      endTime,
+      level: levelInfo,
+      playTime,
+    });
+
+    localStorage.setItem('gameRecords', JSON.stringify(records));
+
+    alert(`게임 끝! 기록: ${duration}초`);
     initializeGame();
   };
 
@@ -66,7 +80,7 @@ const MainPage = () => {
         handleMenuChange={handleMenuChange}
       />
       {activeMenu === MENU_ITEMS.GAME ? (
-        <Game
+        <GameBoard
           numbers={numbers}
           nextNumber={nextNumber}
           hiddenButtons={hiddenButtons}
@@ -74,7 +88,7 @@ const MainPage = () => {
           handleBoardClick={handleBoardClick}
         />
       ) : (
-        <div>랭킹</div>
+        <RangkingBoard />
       )}
     </>
   );
