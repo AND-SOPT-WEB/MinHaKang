@@ -1,14 +1,13 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
-import { GAME_LEVEL, MENU_ITEMS } from '../constants/constant';
+import { GAME_LEVEL, MENU_ITEMS } from '../constant/constant';
 
-const Header = () => {
-  const [activeItem, setActiveItem] = useState(MENU_ITEMS.GAME);
-
-  const handleMenuClick = (item) => {
-    setActiveItem(item);
-  };
-
+const Header = ({
+  duration,
+  level,
+  handleLevel,
+  activeMenu,
+  handleMenuChange,
+}) => {
   return (
     <HeaderContainer>
       <div>
@@ -16,14 +15,14 @@ const Header = () => {
         <nav>
           <ul>
             <ListItem
-              onClick={() => handleMenuClick(MENU_ITEMS.GAME)}
-              isActive={activeItem === MENU_ITEMS.GAME}
+              onClick={() => handleMenuChange(MENU_ITEMS.GAME)}
+              isActive={activeMenu === MENU_ITEMS.GAME}
             >
               {MENU_ITEMS.GAME}
             </ListItem>
             <ListItem
-              onClick={() => handleMenuClick(MENU_ITEMS.RANKING)}
-              isActive={activeItem === MENU_ITEMS.RANKING}
+              onClick={() => handleMenuChange(MENU_ITEMS.RANKING)}
+              isActive={activeMenu === MENU_ITEMS.RANKING}
             >
               {MENU_ITEMS.RANKING}
             </ListItem>
@@ -32,20 +31,27 @@ const Header = () => {
       </div>
 
       <div>
-        <select onChange={(e) => setLevel(Number(e.target.value))}>
-          <option value={GAME_LEVEL.LEVEL_1.LEVEL}>
-            Level {GAME_LEVEL.LEVEL_1.LEVEL}
-          </option>
-          <option value={GAME_LEVEL.LEVEL_2.LEVEL}>
-            Level {GAME_LEVEL.LEVEL_2.LEVEL}
-          </option>
-          <option value={GAME_LEVEL.LEVEL_3.LEVEL}>
-            Level {GAME_LEVEL.LEVEL_3.LEVEL}
-          </option>
-        </select>
+        {activeMenu === MENU_ITEMS.GAME && (
+          <>
+            <select
+              value={level}
+              onChange={(e) => handleLevel(Number(e.target.value))}
+            >
+              <option value={GAME_LEVEL.LEVEL_1.LEVEL}>
+                Level {GAME_LEVEL.LEVEL_1.LEVEL}
+              </option>
+              <option value={GAME_LEVEL.LEVEL_2.LEVEL}>
+                Level {GAME_LEVEL.LEVEL_2.LEVEL}
+              </option>
+              <option value={GAME_LEVEL.LEVEL_3.LEVEL}>
+                Level {GAME_LEVEL.LEVEL_3.LEVEL}
+              </option>
+            </select>
 
-        {/* 타이머 */}
-        <div>0</div>
+            {/* 타이머 */}
+            <div>{duration}</div>
+          </>
+        )}
       </div>
     </HeaderContainer>
   );
