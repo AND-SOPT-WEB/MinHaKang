@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { GAME_LEVEL, MENU_ITEMS } from '../constant/constant';
+import { GAME_LEVEL, MENU_ITEMS } from '@/constant/constant';
 
 const Header = ({
   duration,

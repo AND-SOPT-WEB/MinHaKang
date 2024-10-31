@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { GAME_LEVEL } from '../constant/constant.js';
+import { GAME_LEVEL } from '@constant/constant.js';
 
 const useGameBoard = (onGameStart, onGameEnd) => {
   const [level, setLevel] = useState(GAME_LEVEL.LEVEL_1.LEVEL);

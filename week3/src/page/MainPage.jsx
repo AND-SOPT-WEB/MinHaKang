@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import Game from '../components/Game';
-import useGameBoard from '../hook/useGameBoard.js';
-import { GAME_LEVEL, MENU_ITEMS } from '../constant/constant.js';
+import Header from '@components/Header';
+import Game from '@components/Game';
+import useGameBoard from '@/hook/useGameBoard.js';
+import { GAME_LEVEL, MENU_ITEMS } from '@/constant/constant.js';
 
 const MainPage = () => {
   const [duration, setDuration] = useState(0);

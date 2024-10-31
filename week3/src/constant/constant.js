@@ -1,4 +1,4 @@
-import { deepFreeze } from '../util/deepFreeze';
+import { deepFreeze } from '@/util/deepFreeze';
 
 export const MENU_ITEMS = Object.freeze({
   GAME: '게임',
