@@ -85,8 +85,7 @@ const GlobalStyle = css`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
+    font-size: 62.5%;
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
