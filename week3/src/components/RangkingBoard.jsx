@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
+import { useState } from 'react';
 
 const RangkingBoard = () => {
-  const records = JSON.parse(localStorage.getItem('gameRecords')) || [];
+  const [records, setRecords] = useState(
+    JSON.parse(localStorage.getItem('gameRecords')) || []
+  );
 
   const sortedRecords = records.sort((a, b) => {
     if (a.level === b.level) {
@@ -10,11 +13,16 @@ const RangkingBoard = () => {
     return b.level - a.level;
   });
 
+  const handleReset = () => {
+    localStorage.removeItem('gameRecords');
+    setRecords([]);
+  };
+
   return (
     <RankContainer>
       <RankHeader>
         <h2>랭킹</h2>
-        <button>초기화</button>
+        <button onClick={handleReset}>초기화</button>
       </RankHeader>
 
       <Table>
