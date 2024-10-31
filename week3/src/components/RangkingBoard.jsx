@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 const RangkingBoard = () => {
-  const [records, setRecords] = useState([]);
+  const records = JSON.parse(localStorage.getItem('gameRecords')) || [];
 
-  useEffect(() => {
-    const storedRecords = localStorage.getItem('gameRecords');
-    if (storedRecords) {
-      setRecords(JSON.parse(storedRecords));
+  const sortedRecords = records.sort((a, b) => {
+    if (a.level === b.level) {
+      return a.playTime - b.playTime;
     }
-  }, []);
+    return b.level - a.level;
+  });
 
   return (
     <RankContainer>
@@ -23,12 +22,12 @@ const RangkingBoard = () => {
           <tr>
             <th>타임스탬프</th>
             <th>레벨</th>
-            <th>플레이 시간 (초)</th>
+            <th>플레이 시간</th>
           </tr>
         </thead>
 
         <tbody>
-          {records.map((record, index) => (
+          {sortedRecords.map((record, index) => (
             <tr key={index}>
               <td>{new Date(record.endTime).toLocaleString()}</td>
               <td>Level {record.level}</td>
