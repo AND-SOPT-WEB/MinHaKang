@@ -51,6 +51,8 @@ const MainPage = () => {
     handleLevel,
     handleBoardClick,
     initializeBoard,
+    flashButtons,
+    clickedButtons,
   } = useGameBoard(onGameStart, onGameEnd);
 
   useEffect(() => {
@@ -72,6 +74,7 @@ const MainPage = () => {
 
   return (
     <>
+      {/* 헤더 */}
       <Header
         duration={duration}
         level={level}
@@ -80,14 +83,18 @@ const MainPage = () => {
         handleMenuChange={handleMenuChange}
       />
       {activeMenu === MENU_ITEMS.GAME ? (
+        // 게임판
         <GameBoard
           numbers={numbers}
           nextNumber={nextNumber}
           hiddenButtons={hiddenButtons}
           gridSize={GAME_LEVEL[`LEVEL_${level}`].GRID_SIZE}
           handleBoardClick={handleBoardClick}
+          flashButtons={flashButtons}
+          clickedButtons={clickedButtons}
         />
       ) : (
+        // 랭킹보드
         <RangkingBoard />
       )}
     </>

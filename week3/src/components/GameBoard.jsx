@@ -6,6 +6,8 @@ const GameBoard = ({
   hiddenButtons,
   handleBoardClick,
   gridSize,
+  flashButtons,
+  clickedButtons,
 }) => {
   return (
     <GameContainer>
@@ -19,6 +21,8 @@ const GameBoard = ({
             <NumberButton
               key={index}
               onClick={() => handleBoardClick(number, index)}
+              isClicked={clickedButtons.includes(index)}
+              isFlashing={flashButtons.includes(index)}
             >
               {number}
             </NumberButton>
@@ -35,8 +39,8 @@ const GameContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin-top: 10rem;
-  align-items: center;
   height: 50vh;
+  align-items: center;
   gap: 3rem;
 
   & h2 {
@@ -53,11 +57,31 @@ const ButtonGrid = styled.div`
 const NumberButton = styled.button`
   width: 10rem;
   height: 10rem;
-  font-size: 2rem;
+  border: none;
+  background-color: ${({ theme, isClicked }) =>
+    isClicked ? theme.colors.blue01 : theme.colors.blue02};
+  position: relative;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.white};
+  transition: background-color 0.3s ease;
   cursor: pointer;
+
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${({ theme }) => theme.colors.blue01};
   }
+  @keyframes flash {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  ${({ isFlashing }) => isFlashing && `animation: flash 0.4s ease forwards;`}
 `;
 
 const HiddenDiv = styled.div`

@@ -7,6 +7,8 @@ const useGameBoard = (onGameStart, onGameEnd) => {
   const [numbers, setNumbers] = useState([]);
   const [nextNumber, setNextNumber] = useState(START_NUM);
   const [hiddenButtons, setHiddenButtons] = useState([]);
+  const [clickedButtons, setClickedButtons] = useState([]);
+  const [flashButtons, setFlashButtons] = useState([]);
   const remainingNumbersRef = useRef([]);
 
   // 레벨이 변경될 때마다 게임판 초기화
@@ -17,6 +19,7 @@ const useGameBoard = (onGameStart, onGameEnd) => {
   const initializeBoard = () => {
     setNumbers(shuffleNumbers(START_NUM, END_NUM / 2));
     setHiddenButtons([]);
+    setClickedButtons([]);
     setNextNumber(START_NUM);
     remainingNumbersRef.current = shuffleNumbers(END_NUM / 2 + 1, END_NUM);
   };
@@ -35,6 +38,9 @@ const useGameBoard = (onGameStart, onGameEnd) => {
 
     // 클릭한 숫자가 다음에 클릭해야할 숫자와 같은지 확인
     if (number === nextNumber) {
+      setClickedButtons((prev) => [...prev, index]);
+      setFlashButtons((prev) => [...prev, index]);
+
       if (number === END_NUM) {
         onGameEnd();
       } else {
@@ -43,6 +49,9 @@ const useGameBoard = (onGameStart, onGameEnd) => {
         setNextNumber((prev) => prev + 1);
       }
     }
+    setTimeout(() => {
+      setFlashButtons((prev) => prev.filter((i) => i !== index));
+    }, 500);
   };
 
   const updateNumbers = (index, nextRandomNumber) => {
@@ -65,6 +74,8 @@ const useGameBoard = (onGameStart, onGameEnd) => {
     numbers,
     nextNumber,
     hiddenButtons,
+    clickedButtons,
+    flashButtons,
     initializeBoard,
     handleLevel,
     handleBoardClick,
