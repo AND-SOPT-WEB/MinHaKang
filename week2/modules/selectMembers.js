@@ -11,9 +11,5 @@ export const updateSelectAllCheckbox = (selectAllCheckbox, checkedMembers) => {
     (checkbox) => checkbox.checked
   );
 
-  if (allChecked) {
-    selectAllCheckbox.checked = true;
-  } else {
-    selectAllCheckbox.checked = false;
-  }
+  selectAllCheckbox.checked = allChecked ? true : false;
 };
