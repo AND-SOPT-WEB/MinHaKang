@@ -13,7 +13,7 @@ export default defineConfig({
       '@hooks': resolve(__dirname, './src/hooks'),
       '@page': resolve(__dirname, './src/page'),
       '@styles': resolve(__dirname, './src/styles'),
-      '@util': resolve(__dirname, './src/util'),
+      '@utils': resolve(__dirname, './src/utils'),
       '@': resolve(__dirname, './src'),
     },
   },

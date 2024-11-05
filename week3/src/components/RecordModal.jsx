@@ -20,7 +20,6 @@ const RecordModal = ({ isOpen, onClose, record }) => {
 
 export default RecordModal;
 
-// 스타일 정의
 const ModalContainer = styled.div`
   text-align: center;
 

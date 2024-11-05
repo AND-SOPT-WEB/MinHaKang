@@ -1,20 +1,13 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { getRecords, sortRecords, resetRecords } from '@utils/recordStorage.js';
 
 const RangkingBoard = () => {
-  const [records, setRecords] = useState(
-    JSON.parse(localStorage.getItem('gameRecords')) || []
-  );
-
-  const sortedRecords = records.sort((a, b) => {
-    if (a.level === b.level) {
-      return a.playTime - b.playTime;
-    }
-    return b.level - a.level;
-  });
+  const [records, setRecords] = useState(getRecords());
+  const sortedRecords = sortRecords(records);
 
   const handleReset = () => {
-    localStorage.removeItem('gameRecords');
+    resetRecords();
     setRecords([]);
   };
 

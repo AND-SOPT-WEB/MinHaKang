@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Header from '@components/Header';
 import GameBoard from '@components/GameBoard';
-import RangkingBoard from '@/components/RangkingBoard';
+import RangkingBoard from '@components/RangkingBoard';
 import RecordModal from '@components/RecordModal';
-import useGameBoard from '@/hooks/useGameBoard.js';
-import useTimer from '@/hooks/useTimer.js';
-import { GAME_LEVEL, MENU_ITEMS } from '@/constant/constant.js';
+import useGameBoard from '@hooks/useGameBoard.js';
+import useTimer from '@hooks/useTimer.js';
+import { GAME_LEVEL, MENU_ITEMS } from '@constant/constant.js';
+import { addRecord } from '@utils/recordStorage.js';
 
 const Home = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -29,17 +30,14 @@ const Home = () => {
     const endTime = new Date().toISOString();
     const levelInfo = level;
     const playTime = duration;
-    const records = JSON.parse(localStorage.getItem('gameRecords')) || [];
 
     const newRecord = {
       endTime,
       level: levelInfo,
       playTime,
     };
-    records.push(newRecord);
 
-    localStorage.setItem('gameRecords', JSON.stringify(records));
-
+    addRecord(newRecord);
     setGameRecord(newRecord);
     setIsModalOpen(true);
     initializeGame();
@@ -64,7 +62,6 @@ const Home = () => {
 
   return (
     <>
-      {/* 헤더 */}
       <Header
         duration={duration}
         level={level}
@@ -73,7 +70,6 @@ const Home = () => {
         handleMenuChange={handleMenuChange}
       />
       {activeMenu === MENU_ITEMS.GAME ? (
-        // 게임판
         <GameBoard
           numbers={numbers}
           nextNumber={nextNumber}
@@ -84,11 +80,9 @@ const Home = () => {
           clickedButtons={clickedButtons}
         />
       ) : (
-        // 랭킹보드
         <RangkingBoard />
       )}
 
-      {/* 모달 */}
       <RecordModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
