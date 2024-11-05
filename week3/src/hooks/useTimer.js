@@ -20,7 +20,6 @@ const useTimer = (isGameStarted) => {
     };
   }, [isGameStarted]);
 
-  // 타이머를 초기화하는 메서드
   const resetDuration = () => {
     setDuration(0);
   };
