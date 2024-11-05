@@ -14,14 +14,6 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameRecord, setGameRecord] = useState(null);
 
-  const { duration, resetDuration } = useTimer(isGameStarted);
-
-  const initializeGame = () => {
-    setIsGameStarted(false);
-    resetDuration();
-    initializeBoard();
-  };
-
   const onGameStart = () => {
     setIsGameStarted(true);
   };
@@ -48,6 +40,18 @@ const Home = () => {
     initializeGame();
   };
 
+  const handleLevelChange = (newLevel) => {
+    setIsGameStarted(false);
+    resetDuration(); 
+    handleLevel(newLevel);
+  };
+
+  const initializeGame = () => {
+    setIsGameStarted(false);
+    resetDuration();
+    initializeBoard();
+  };
+
   const {
     level,
     numbers,
@@ -60,12 +64,14 @@ const Home = () => {
     clickedButtons,
   } = useGameBoard(onGameStart, onGameEnd);
 
+  const { duration, resetDuration } = useTimer(isGameStarted);
+
   return (
     <>
       <Header
         duration={duration}
         level={level}
-        handleLevel={handleLevel}
+        handleLevel={handleLevelChange} // 레벨 변경 핸들러로 수정
         activeMenu={activeMenu}
         handleMenuChange={handleMenuChange}
       />
