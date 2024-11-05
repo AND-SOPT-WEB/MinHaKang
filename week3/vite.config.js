@@ -10,7 +10,7 @@ export default defineConfig({
       '@components': resolve(__dirname, './src/components'),
       '@common': resolve(__dirname, './src/components/common'),
       '@constant': resolve(__dirname, './src/constant'),
-      '@hook': resolve(__dirname, './src/hook'),
+      '@hooks': resolve(__dirname, './src/hooks'),
       '@page': resolve(__dirname, './src/page'),
       '@styles': resolve(__dirname, './src/styles'),
       '@util': resolve(__dirname, './src/util'),

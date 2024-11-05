@@ -1,5 +1,5 @@
 import { Global, ThemeProvider } from '@emotion/react';
-import MainPage from './page/MainPage';
+import Home from './page/Home';
 import GlobalStyle from './styles/GlobalStyle.js';
 import { theme } from './styles/theme.js';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={GlobalStyle} />
-      <MainPage />
+      <Home />
     </ThemeProvider>
   );
 }

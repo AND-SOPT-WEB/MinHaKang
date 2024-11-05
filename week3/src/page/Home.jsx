@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '@components/Header';
 import GameBoard from '@components/GameBoard';
 import RangkingBoard from '@/components/RangkingBoard';
 import RecordModal from '@components/RecordModal';
-import useGameBoard from '@/hook/useGameBoard.js';
+import useGameBoard from '@/hooks/useGameBoard.js';
+import useTimer from '@/hooks/useTimer.js';
 import { GAME_LEVEL, MENU_ITEMS } from '@/constant/constant.js';
 
-const MainPage = () => {
-  const [duration, setDuration] = useState(0);
+const Home = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [activeMenu, setActiveMenu] = useState(MENU_ITEMS.GAME);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameRecord, setGameRecord] = useState(null);
 
+  const { duration, resetDuration } = useTimer(isGameStarted);
+
   const initializeGame = () => {
     setIsGameStarted(false);
-    setDuration(0);
+    resetDuration();
     initializeBoard();
   };
 
@@ -47,22 +49,6 @@ const MainPage = () => {
     setActiveMenu(menu);
     initializeGame();
   };
-
-  useEffect(() => {
-    let timer;
-
-    if (isGameStarted) {
-      const intervalStartTime = Date.now();
-      timer = setInterval(() => {
-        const currentTime = Date.now();
-        const elapsedTime = (currentTime - intervalStartTime) / 1000;
-        setDuration(elapsedTime.toFixed(2));
-      }, 10);
-    }
-    return () => {
-      clearInterval(timer);
-    };
-  }, [isGameStarted]);
 
   const {
     level,
@@ -112,4 +98,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Home;
