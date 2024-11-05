@@ -49,9 +49,6 @@ const useGameBoard = (onGameStart, onGameEnd) => {
         setNextNumber((prev) => prev + 1);
       }
     }
-    setTimeout(() => {
-      setFlashButtons((prev) => prev.filter((i) => i !== index));
-    }, 500);
   };
 
   const updateNumbers = (index, nextRandomNumber) => {
