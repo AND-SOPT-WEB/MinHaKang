@@ -223,3 +223,26 @@ globalStyle(':where(dialog:modal)', {
     },
   },
 });
+
+/**
+ * input[type="number"]의 스핀 버튼 제거
+ * Remove the spin button for number input
+ */
+
+globalStyle('input[type="number"]::-webkit-outer-spin-button', {
+  '@layer': {
+    [layers.reset]: {
+      WebkitAppearance: 'none',
+      margin: '0',
+    },
+  },
+});
+
+globalStyle('input[type="number"]::-webkit-inner-spin-button', {
+  '@layer': {
+    [layers.reset]: {
+      WebkitAppearance: 'none',
+      margin: '0',
+    },
+  },
+});

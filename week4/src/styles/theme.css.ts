@@ -99,4 +99,7 @@ export const vars = createGlobalTheme(':root', {
     xl: '1.5rem',
     '2xl': '1.75rem',
   },
+  spacing: {
+    headerHeight: '100px',
+  },
 });
