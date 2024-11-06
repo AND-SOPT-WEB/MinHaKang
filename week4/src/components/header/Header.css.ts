@@ -5,7 +5,8 @@ export const header = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '35px 20px',
+  padding: '20px',
+  minHeight: vars.spacing.headerHeight,
   gap: 20,
 
   backgroundColor: vars.color.primary,
