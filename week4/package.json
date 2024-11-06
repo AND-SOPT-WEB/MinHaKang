@@ -14,7 +14,9 @@
     "@vanilla-extract/vite-plugin": "^4.0.17",
     "axios": "^1.7.7",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "vite-tsconfig-paths": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
