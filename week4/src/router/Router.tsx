@@ -8,6 +8,7 @@ import Login from '@pages/Login/Login';
 import Signup from '@pages/Signup/Singup';
 import Hobby from '@pages/Mypage/hobby/Hobby';
 import MyInfo from '@pages/Mypage/myInfo/MyInfo';
+import ProtectedRoute from './ProtectedRoute';
 
 const Router = () => (
   <RouterProvider
@@ -19,22 +20,37 @@ const Router = () => (
             path: '/',
             element: <Navigate to='/login' replace />,
           },
-
           {
             path: '/login',
-            element: <Login />,
+            element: (
+              <ProtectedRoute protect={false}>
+                <Login />
+              </ProtectedRoute>
+            ),
           },
           {
             path: '/signup',
-            element: <Signup />,
+            element: (
+              <ProtectedRoute protect={false}>
+                <Signup />
+              </ProtectedRoute>
+            ),
           },
           {
             path: '/mypage/hobby',
-            element: <Hobby />,
+            element: (
+              <ProtectedRoute protect={true}>
+                <Hobby />
+              </ProtectedRoute>
+            ),
           },
           {
             path: '/mypage/info',
-            element: <MyInfo />,
+            element: (
+              <ProtectedRoute protect={true}>
+                <MyInfo />
+              </ProtectedRoute>
+            ),
           },
         ],
       },
