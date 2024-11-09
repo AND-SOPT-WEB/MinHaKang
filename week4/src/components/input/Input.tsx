@@ -5,9 +5,14 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
 }
 
-const Input = ({ type, placeholder }: InputProps) => {
+const Input = ({ type, placeholder, ...props }: InputProps) => {
   return (
-    <input className={styles.input} type={type} placeholder={placeholder} />
+    <input
+      className={styles.input}
+      type={type}
+      placeholder={placeholder}
+      {...props} 
+    />
   );
 };
 
