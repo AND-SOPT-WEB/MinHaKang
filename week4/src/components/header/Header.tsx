@@ -1,7 +1,15 @@
 import * as styles from './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ACCESS_TOKEN_KEY } from '@constants/api';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+    navigate('/login');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
@@ -16,7 +24,9 @@ const Header = () => {
         </nav>
       </div>
 
-      <button className={styles.logoutButton}>로그아웃</button>
+      <button className={styles.logoutButton} onClick={handleLogout}>
+        로그아웃
+      </button>
     </header>
   );
 };
