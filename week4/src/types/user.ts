@@ -5,3 +5,5 @@ export interface User {
 }
 
 export type LoginData = Pick<User, 'username' | 'password'>;
+
+export type UserInfoData = Omit<User, 'username'>;
