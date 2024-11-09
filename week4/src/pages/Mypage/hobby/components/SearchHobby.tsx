@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import * as styles from './SearchHobby.css';
 import Button from '@components/button/Button';
 import Input from '@components/input/Input';
 import useMyHobby from '@hooks/useMyHobby';
+import useUserHobby from '@hooks/useUserHobby';
 
 const SearchHobby = () => {
   const { myHobby, myHobbyError } = useMyHobby();
+  const { userId, userHobby, userHobbyError, fetchUserHobby } = useUserHobby();
+
+  const [tempUserId, setTempUserId] = useState<number | null>(null);
+
+  const handleUserIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTempUserId(Number(e.target.value));
+  };
+
+  const handleSearch = () => {
+    if (tempUserId !== null) {
+      fetchUserHobby(tempUserId);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -18,10 +33,18 @@ const SearchHobby = () => {
         <Input
           type='number'
           placeholder='사용자 번호'
+          onChange={handleUserIdChange}
         />
       </div>
 
-      <Button>검색</Button>
+      {userHobby && (
+        <p>
+          {userId}번님의 취미: {userHobby}
+        </p>
+      )}
+      {userHobbyError && userHobby === null && <p>{userHobbyError}</p>}
+
+      <Button onClick={handleSearch}>검색</Button>
     </div>
   );
 };
