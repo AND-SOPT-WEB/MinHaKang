@@ -11,7 +11,9 @@ export const getMyHobby = async () => {
     });
     return response.data.result.hobby;
   } catch (error) {
-    throw new Error('취미 조회에 실패했습니다.');
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 };
 
@@ -25,6 +27,9 @@ export const getUserHobby = async (userId: number) => {
     });
     return response.data.result.hobby;
   } catch (error) {
-    throw new Error('다른 사람 취미 조회에 실패했습니다.');
+    console.log(error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 };

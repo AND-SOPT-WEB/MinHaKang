@@ -6,8 +6,8 @@ import useMyHobby from '@hooks/useMyHobby';
 import useUserHobby from '@hooks/useUserHobby';
 
 const SearchHobby = () => {
-  const { myHobby, myHobbyError } = useMyHobby();
-  const { userId, userHobby, userHobbyError, fetchUserHobby } = useUserHobby();
+  const { myHobby } = useMyHobby();
+  const { userId, userHobby, fetchUserHobby } = useUserHobby();
 
   const [tempUserId, setTempUserId] = useState<number | null>(null);
 
@@ -25,7 +25,7 @@ const SearchHobby = () => {
     <div className={styles.container}>
       <div>
         <h3 className={styles.title}>나의 취미</h3>
-        {myHobbyError ? <p>{myHobbyError}</p> : <p>{myHobby}</p>}
+        {myHobby && <p>{myHobby}</p>}
       </div>
 
       <div>
@@ -42,7 +42,6 @@ const SearchHobby = () => {
           {userId}번님의 취미: {userHobby}
         </p>
       )}
-      {userHobbyError && userHobby === null && <p>{userHobbyError}</p>}
 
       <Button onClick={handleSearch}>검색</Button>
     </div>

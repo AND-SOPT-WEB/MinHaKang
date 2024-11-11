@@ -12,9 +12,8 @@ const useUserHobby = () => {
       setUserHobby(hobby);
       setUserId(id);
       setUserHobbyError(null);
-    } catch (error: any) {
-      setUserHobbyError(error.message);
-      setUserHobby(null);
+    } catch (error) {
+      alert((error as Error).message);
     }
   };
 

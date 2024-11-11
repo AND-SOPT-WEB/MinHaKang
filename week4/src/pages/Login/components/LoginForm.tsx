@@ -24,8 +24,8 @@ const LoginForm = () => {
       const token = await postLogin(formData);
       sessionStorage.setItem(ACCESS_TOKEN_KEY, token);
       navigate('/mypage/hobby');
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      alert((error as Error).message);
     }
   };
 

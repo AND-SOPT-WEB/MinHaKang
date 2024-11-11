@@ -8,7 +8,9 @@ export const postLogin = async (data: LoginData) => {
 
     return response.data.result.token;
   } catch (error) {
-    throw new Error('로그인에 실패했습니다.');
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 };
 
@@ -17,7 +19,9 @@ export const postSignUp = async (data: User) => {
     const response = await client.post(END_POINT.USER, data);
     return response.data.result;
   } catch (error) {
-    throw new Error('회원가입에 실패했습니다.');
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 };
 
@@ -32,6 +36,8 @@ export const putUserInfo = async (data: UserInfoData) => {
 
     return response.data;
   } catch (error) {
-    throw new Error('회원 정보 수정에 실패했습니다.');
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 };

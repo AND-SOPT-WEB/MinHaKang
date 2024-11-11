@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { putUserInfo } from '@api/user';
 import { UserInfoData } from '@type/user';
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '@constants/messages';
 
 const useEditProfile = () => {
   const [newPassword, setNewPassword] = useState<string>('');
@@ -8,7 +9,7 @@ const useEditProfile = () => {
 
   const handleUpdateProfile = async () => {
     if (!newPassword && !newHobby) {
-      alert('변경할 정보를 입력해주세요.');
+      alert(ERROR_MESSAGE.UPDATE_INFO_REQUIRED);
       return;
     }
 
@@ -18,9 +19,9 @@ const useEditProfile = () => {
 
     try {
       await putUserInfo(data);
-      alert('정보 수정에 성공했습니다.');
-    } catch (error: any) {
-      alert(error.message);
+      alert(SUCCESS_MESSAGE.UPDATE_PROFILE);
+    } catch (error) {
+      alert((error as Error).message);
     }
   };
 

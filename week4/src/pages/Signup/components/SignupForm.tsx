@@ -4,6 +4,7 @@ import Input from '@components/input/Input';
 import Button from '@components/button/Button';
 import { User } from '@type/user';
 import { postSignUp } from '@api/user';
+import { SUCCESS_MESSAGE } from '@constants/messages';
 
 const SignupForm = () => {
   const [step, setStep] = useState<number>(1);
@@ -30,9 +31,9 @@ const SignupForm = () => {
     if (step === 3) {
       try {
         const response = await postSignUp(formData);
-        alert(`회원가입에 성공! 회원 번호: ${response.no}`);
-      } catch (error: any) {
-        alert(error.message);
+        alert(SUCCESS_MESSAGE.SIGNUP(response.no));
+      } catch (error) {
+        alert((error as Error).message);
       }
     }
   };

@@ -3,15 +3,13 @@ import { getMyHobby } from '@api/hobby';
 
 const useMyHobby = () => {
   const [myHobby, setMyHobby] = useState<string>('');
-  const [myHobbyError, setMyHobbyError] = useState<string | null>(null);
 
   const fetchMyHobby = async () => {
     try {
       const hobby = await getMyHobby();
       setMyHobby(hobby);
-      setMyHobbyError(null);
-    } catch (error: any) {
-      setMyHobbyError('나의 취미 조회에 실패했습니다.');
+    } catch (error) {
+      alert((error as Error).message);
     }
   };
 
@@ -19,7 +17,7 @@ const useMyHobby = () => {
     fetchMyHobby();
   }, []);
 
-  return { myHobby, myHobbyError };
+  return { myHobby };
 };
 
 export default useMyHobby;
