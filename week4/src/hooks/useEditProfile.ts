@@ -4,8 +4,8 @@ import { UserInfoData } from '@type/user';
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '@constants/messages';
 
 const useEditProfile = () => {
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [newHobby, setNewHobby] = useState<string>('');
+  const [newPassword, setNewPassword] = useState('');
+  const [newHobby, setNewHobby] = useState('');
 
   const handleUpdateProfile = async () => {
     if (!newPassword && !newHobby) {

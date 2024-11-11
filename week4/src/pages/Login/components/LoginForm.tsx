@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './LoginForm.css';
 import Input from '@components/input/Input';
 import Button from '@components/button/Button';
-import { ACCESS_TOKEN_KEY } from '@constants/api';
 import { postLogin } from '@api/user';
 import { LoginData } from '@type/user';
 import useFormData from '@hooks/useFormData';
+import { ACCESS_TOKEN_KEY } from '@constants/config';
 
 const LoginForm = () => {
   const navigate = useNavigate();

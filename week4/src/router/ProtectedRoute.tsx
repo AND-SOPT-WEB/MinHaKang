@@ -1,5 +1,5 @@
+import { ACCESS_TOKEN_KEY } from '@constants/config';
 import { Navigate, Outlet } from 'react-router-dom';
-import { ACCESS_TOKEN_KEY } from '@constants/api';
 
 interface ProtectedRouteProps {
   protect?: boolean;

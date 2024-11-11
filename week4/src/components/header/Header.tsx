@@ -1,6 +1,6 @@
+import { ACCESS_TOKEN_KEY } from '@constants/config';
 import * as styles from './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN_KEY } from '@constants/api';
 
 const Header = () => {
   const navigate = useNavigate();

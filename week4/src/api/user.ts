@@ -1,5 +1,6 @@
 import { client } from './client';
-import { ACCESS_TOKEN_KEY, END_POINT } from '@constants/api';
+import { END_POINT } from '@constants/api';
+import { ACCESS_TOKEN_KEY } from '@constants/config';
 import { LoginData, User, UserInfoData } from '@type/user';
 
 export const postLogin = async (data: LoginData) => {

@@ -8,7 +8,6 @@ import useUserHobby from '@hooks/useUserHobby';
 const SearchHobby = () => {
   const { myHobby } = useMyHobby();
   const { userId, userHobby, fetchUserHobby } = useUserHobby();
-
   const [tempUserId, setTempUserId] = useState<number | null>(null);
 
   const handleUserIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {

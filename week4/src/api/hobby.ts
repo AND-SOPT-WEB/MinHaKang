@@ -1,5 +1,6 @@
+import { ACCESS_TOKEN_KEY } from '@constants/config';
 import { client } from './client';
-import { ACCESS_TOKEN_KEY, END_POINT } from '@constants/api';
+import { END_POINT } from '@constants/api';
 
 export const getMyHobby = async () => {
   try {
