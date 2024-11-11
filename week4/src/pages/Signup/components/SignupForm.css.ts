@@ -18,3 +18,14 @@ export const error = style({
   margin: 4,
   color: vars.color.red500,
 });
+
+export const inputContainer = style({
+  position: 'relative',
+});
+
+export const visibilityIcon = style({
+  position: 'absolute',
+  right: 10,
+  top: 10,
+  cursor: 'pointer',
+});
