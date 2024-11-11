@@ -9,6 +9,8 @@ import { postLogin } from '@api/user';
 const LoginForm = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const navigate = useNavigate();
+  const isButtonDisabled =
+    !formData.username.trim() || !formData.password.trim();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,7 +49,9 @@ const LoginForm = () => {
         onChange={onInputChange}
         required
       />
-      <Button type='submit'>로그인</Button>
+      <Button disabled={isButtonDisabled} type='submit'>
+        로그인
+      </Button>
     </form>
   );
 };

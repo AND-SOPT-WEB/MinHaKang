@@ -38,6 +38,13 @@ const SignupForm = () => {
     }
   };
 
+  const isButtonDisabled = () => {
+    if (step === 1) return !formData.username.trim();
+    if (step === 2) return !formData.password.trim();
+    if (step === 3) return !formData.hobby.trim();
+    return true;
+  };
+
   return (
     <form className={styles.form} onSubmit={onNext} autoComplete='off'>
       {step === 1 && (
@@ -83,7 +90,9 @@ const SignupForm = () => {
         </>
       )}
 
-      <Button>{step < 3 ? '다음' : '회원가입'}</Button>
+      <Button disabled={isButtonDisabled()}>
+        {step < 3 ? '다음' : '회원가입'}
+      </Button>
     </form>
   );
 };
