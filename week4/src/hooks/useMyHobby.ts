@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getMyHobby } from '@api/hobby';
 
 const useMyHobby = () => {
-  const [myHobby, setMyHobby] = useState<string>('');
+  const [myHobby, setMyHobby] = useState('');
 
   const fetchMyHobby = async () => {
     try {

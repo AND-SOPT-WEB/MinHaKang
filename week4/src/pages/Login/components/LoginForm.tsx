@@ -1,24 +1,20 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as styles from './LoginForm.css';
 import Input from '@components/input/Input';
 import Button from '@components/button/Button';
 import { ACCESS_TOKEN_KEY } from '@constants/api';
 import { postLogin } from '@api/user';
+import { LoginData } from '@type/user';
+import useFormData from '@hooks/useFormData';
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
   const navigate = useNavigate();
+  const { formData, onInputChange } = useFormData<LoginData>({
+    username: '',
+    password: '',
+  });
   const isButtonDisabled =
     !formData.username.trim() || !formData.password.trim();
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

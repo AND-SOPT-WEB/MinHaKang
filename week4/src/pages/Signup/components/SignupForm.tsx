@@ -2,25 +2,22 @@ import { useState } from 'react';
 import * as styles from './SignupForm.css';
 import Input from '@components/input/Input';
 import Button from '@components/button/Button';
-import { User } from '@type/user';
+import { SignupData } from '@type/user';
 import { postSignUp } from '@api/user';
-import { SUCCESS_MESSAGE } from '@constants/messages';
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from '@constants/messages';
+import useFormData from '@hooks/useFormData';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
-  const [step, setStep] = useState<number>(1);
-  const [formData, setFormData] = useState<User>({
+  const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const { formData, error, onInputChange } = useFormData<SignupData>({
     username: '',
     password: '',
+    passwordConfirm: '',
     hobby: '',
   });
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const isMatchPassword = formData.password === formData.passwordConfirm;
 
   const onNext = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +29,7 @@ const SignupForm = () => {
       try {
         const response = await postSignUp(formData);
         alert(SUCCESS_MESSAGE.SIGNUP(response.no));
+        navigate('/login');
       } catch (error) {
         alert((error as Error).message);
       }
@@ -39,8 +37,15 @@ const SignupForm = () => {
   };
 
   const isButtonDisabled = () => {
+    if (error) return true;
     if (step === 1) return !formData.username.trim();
-    if (step === 2) return !formData.password.trim();
+    if (step === 2) {
+      return (
+        !formData.password.trim() ||
+        !formData.passwordConfirm.trim() ||
+        !isMatchPassword
+      );
+    }
     if (step === 3) return !formData.hobby.trim();
     return true;
   };
@@ -72,7 +77,14 @@ const SignupForm = () => {
             onChange={onInputChange}
             required
           />
-          <Input type='password' placeholder='비밀번호 확인' required />
+          <Input
+            type='password'
+            name='passwordConfirm'
+            placeholder='비밀번호 확인'
+            value={formData.passwordConfirm}
+            onChange={onInputChange}
+            required
+          />
         </>
       )}
 
@@ -88,6 +100,11 @@ const SignupForm = () => {
             required
           />
         </>
+      )}
+
+      {error && <p className={styles.error}>{error}</p>}
+      {!isMatchPassword && !error && (
+        <p className={styles.error}>{ERROR_MESSAGE.PASSWORD_MISMATCH}</p>
       )}
 
       <Button disabled={isButtonDisabled()}>

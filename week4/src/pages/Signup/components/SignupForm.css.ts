@@ -13,3 +13,8 @@ export const formTitle = style({
   fontSize: vars.fontSize.lg,
   fontWeight: 'bold',
 });
+
+export const error = style({
+  margin: 4,
+  color: vars.color.red500,
+});
