@@ -49,6 +49,11 @@ const useGameBoard = (onGameStart, onGameEnd) => {
         setNextNumber((prev) => prev + 1);
       }
     }
+
+    // 게임이 끝난후 flash 초기화
+    setTimeout(() => {
+      setFlashButtons((prev) => prev.filter((i) => i !== index));
+    }, 500);
   };
 
   const updateNumbers = (index, nextRandomNumber) => {
