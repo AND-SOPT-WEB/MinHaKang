@@ -32,7 +32,7 @@ const Home = () => {
     addRecord(newRecord);
     setGameRecord(newRecord);
     setIsModalOpen(true);
-    initializeGame();
+    setIsGameStarted(false);
   };
 
   const handleMenuChange = (menu) => {
@@ -42,7 +42,7 @@ const Home = () => {
 
   const handleLevelChange = (newLevel) => {
     setIsGameStarted(false);
-    resetDuration(); 
+    resetDuration();
     handleLevel(newLevel);
   };
 
@@ -50,6 +50,11 @@ const Home = () => {
     setIsGameStarted(false);
     resetDuration();
     initializeBoard();
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    initializeGame();
   };
 
   const {
@@ -91,7 +96,7 @@ const Home = () => {
 
       <RecordModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
         record={gameRecord}
       />
     </>
