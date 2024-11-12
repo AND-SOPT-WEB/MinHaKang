@@ -90,11 +90,11 @@ const Table = styled.table`
     color: ${({ theme }) => theme.colors.white};
   }
 
-  & tr:nth-child(odd) {
+  & tr:nth-of-type(odd) {
     background-color: ${({ theme }) => theme.colors.white};
   }
 
-  & tr:nth-child(even) {
+  & tr:nth-of-type(even) {
     background-color: ${({ theme }) => theme.colors.blue03};
   }
 
