@@ -4,11 +4,16 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Layout from './Layout';
+import MyPageLayout from './MyPageLayout';
 import Login from '@pages/Login/Login';
 import Signup from '@pages/Signup/Singup';
 import Hobby from '@pages/Mypage/hobby/Hobby';
 import MyInfo from '@pages/Mypage/myInfo/MyInfo';
 import ProtectedRoute from './ProtectedRoute';
+
+const createProtectedRoute = (protect: boolean, Component: React.ReactNode) => (
+  <ProtectedRoute protect={protect}>{Component}</ProtectedRoute>
+);
 
 const Router = () => (
   <RouterProvider
@@ -22,35 +27,25 @@ const Router = () => (
           },
           {
             path: '/login',
-            element: (
-              <ProtectedRoute protect={false}>
-                <Login />
-              </ProtectedRoute>
-            ),
+            element: createProtectedRoute(false, <Login />),
           },
           {
             path: '/signup',
-            element: (
-              <ProtectedRoute protect={false}>
-                <Signup />
-              </ProtectedRoute>
-            ),
+            element: createProtectedRoute(false, <Signup />),
+          },
+        ],
+      },
+      {
+        element: <MyPageLayout />,
+        path: '/mypage',
+        children: [
+          {
+            path: 'hobby',
+            element: createProtectedRoute(true, <Hobby />),
           },
           {
-            path: '/mypage/hobby',
-            element: (
-              <ProtectedRoute protect={true}>
-                <Hobby />
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: '/mypage/info',
-            element: (
-              <ProtectedRoute protect={true}>
-                <MyInfo />
-              </ProtectedRoute>
-            ),
+            path: 'info',
+            element: createProtectedRoute(true, <MyInfo />),
           },
         ],
       },

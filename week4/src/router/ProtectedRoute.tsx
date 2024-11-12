@@ -11,15 +11,13 @@ const ProtectedRoute = ({ protect = false, children }: ProtectedRouteProps) => {
 
   if (protect && !isLoggedIn) {
     return <Navigate to='/login' replace />;
-  } else if (!protect && isLoggedIn) {
+  }
+
+  if (!protect && isLoggedIn) {
     return <Navigate to='/mypage/hobby' replace />;
   }
 
-  if (children) {
-    return <>{children}</>;
-  }
-
-  return <Outlet />;
+  return children ? <>{children}</> : <Outlet />;
 };
 
 export default ProtectedRoute;

@@ -28,7 +28,6 @@ export const getUserHobby = async (userId: number) => {
     });
     return response.data.result.hobby;
   } catch (error) {
-    console.log(error);
     if (error instanceof Error) {
       throw new Error(error.message);
     }
